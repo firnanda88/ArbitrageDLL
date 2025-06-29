@@ -1,4 +1,4 @@
-name: Build DLL untuk Arbitrase
+name: Bangun DLL untuk Arbitrase
 
 on:
   push:
@@ -17,9 +17,10 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
 
     - name: Build DLL
-      run: cl /LD arbitrase_berbagi_memori.cpp arbitrase_berbagi_memori.def /OUT:arbitrage_shared_memory.dll
+      run: |
+        cl /LD arbitrase_berbagi_memori.cpp arbitrase_berbagi_memori.def /OUT:arbitrage_shared_memory.dll
 
-    - name: Upload Artifact
+    - name: Upload DLL Artifact
       uses: actions/upload-artifact@v4
       with:
         name: arbitrage_shared_memory
