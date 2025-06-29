@@ -20,7 +20,7 @@ jobs:
       run: cl /LD arbitrase_berbagi_memori.cpp arbitrase_berbagi_memori.def /OUT:arbitrage_shared_memory.dll
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: arbitrage_shared_memory
         path: arbitrage_shared_memory.dll
