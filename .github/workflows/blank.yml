@@ -1,0 +1,27 @@
+name: Build DLL for Arbitrage
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-dll:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    - name: Setup MSVC Developer Command Prompt
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Build DLL
+      run: |
+        cl /LD arbitrage_shared_memory.cpp /link /DEF:arbitrage_shared_memory.def /OUT:arbitrage_shared_memory.dll
+
+    - name: Upload DLL Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: arbitrage_shared_memory
+        path: arbitrage_shared_memory.dll
